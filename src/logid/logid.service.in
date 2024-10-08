@@ -7,7 +7,18 @@ Wants=multi-user.target
 [Service]
 Type=simple
 ExecStart=${CMAKE_INSTALL_PREFIX}/bin/logid
-User=root
+User=logid
+Group=logid
+ProtectSystem=strict
+ProtectHome=true
+PrivateDevices=false # Needs to access /dev/uinput & /dev/hidraw*
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
 
 [Install]
 WantedBy=graphical.target
